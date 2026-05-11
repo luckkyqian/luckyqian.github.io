@@ -30,9 +30,38 @@
 
     body{
       font-family:'Noto Serif SC', serif;
-      background:#090909;
+      background:#1a1a1a;
       color:var(--text);
       overflow-x:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      margin:0;
+    }
+
+    .app-wrapper{
+      aspect-ratio:9/16;
+      max-height:100vh;
+      height:100vh;
+      width:auto;
+      max-width:100vw;
+      overflow-y:auto;
+      overflow-x:hidden;
+      position:relative;
+      background:#090909;
+      box-shadow:0 0 50px rgba(0,0,0,.7);
+      scrollbar-width:thin;
+      scrollbar-color:rgba(216,179,106,.5) transparent;
+    }
+
+    .app-wrapper::-webkit-scrollbar{
+      width:6px;
+    }
+
+    .app-wrapper::-webkit-scrollbar-thumb{
+      background:rgba(216,179,106,.5);
+      border-radius:10px;
     }
 
     body::-webkit-scrollbar{
@@ -45,7 +74,7 @@
     }
 
     .bg-pattern{
-      position:fixed;
+      position:absolute;
       inset:0;
       background:
         radial-gradient(circle at top, rgba(143,29,29,.35), transparent 35%),
@@ -55,7 +84,7 @@
     }
 
     .texture{
-      position:fixed;
+      position:absolute;
       inset:0;
       opacity:.08;
       background-image:url('assets/noise.png');
@@ -64,7 +93,7 @@
     }
 
     .side-nav{
-      position:fixed;
+      position:absolute;
       right:18px;
       top:50%;
       transform:translateY(-50%);
@@ -275,6 +304,18 @@
     }
 
     @media(max-width:768px){
+      body{
+        display:block;
+        min-height:auto;
+      }
+
+      .app-wrapper{
+        width:100vw;
+        height:100vh;
+        aspect-ratio:auto;
+        box-shadow:none;
+        border-radius:0;
+      }
 
       .side-nav{
         right:8px;
@@ -307,8 +348,10 @@
       }
     }
   </style>
+<base target="_blank">
 </head>
 <body>
+  <div class="app-wrapper">
 
   <div class="bg-pattern"></div>
   <div class="texture"></div>
@@ -560,5 +603,7 @@
     });
   </script>
 
+
+  </div>
 </body>
 </html>
